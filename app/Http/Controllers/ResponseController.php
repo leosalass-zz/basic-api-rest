@@ -8,7 +8,15 @@ class ResponseController extends Controller
         'CREATED' => '201',
         'BAD REQUEST' => '400',
         'UNAUTHORIZED' => '401',
+        'FORBIDEN' => '403',
         'NOT FOUD' => '404',
+        'METHOD NOT ALLOWED' => '405',
+        'NOT ACCEPTABLE' => '406',
+        'GONE' => '410',
+        'IM A TEAPOT' => '418',
+        'TO MANY REQUEST' => '429',
+        'INTERNAL SERVER ERROR' => '500',
+        'SERVICE UNAVAILABLE' => '503',
     ];
     private static $response =
         [
