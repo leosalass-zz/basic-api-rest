@@ -14,12 +14,20 @@ class UserPermissionsTableSeeder extends Seeder
         $seed = [];
 
         /*
-         * access permissions
+         * administrator permissions
          */
         $seed[] = [
             'name' => 'access.all',
             'description' => 'grant full interface access',
         ];
+        $seed[] = [
+            'name' => 'crud.all',
+            'description' => 'grant access to all crud operations',
+        ];
+
+        /*
+         * access permissions
+         */
         $seed[] = [
             'name' => 'access.backend',
             'description' => 'grant backend interface access',
@@ -41,9 +49,90 @@ class UserPermissionsTableSeeder extends Seeder
          * crud permissions
          */
         $seed[] = [
-            'name' => 'crud.all',
-            'description' => 'grant access to all crud operations',
+            'name' => 'user_roles.create',
+            'description' => 'grant create access to user_roles',
         ];
+        $seed[] = [
+            'name' => 'user_roles.read',
+            'description' => 'grant read access to user_roles',
+        ];
+        $seed[] = [
+            'name' => 'user_roles.update',
+            'description' => 'grant update access to user_roles',
+        ];
+        $seed[] = [
+            'name' => 'user_roles.delete',
+            'description' => 'grant delete access to user_roles',
+        ];
+
+        $seed[] = [
+            'name' => 'user_has_user_roles.create',
+            'description' => 'grant create access to user_has_user_roles',
+        ];
+        $seed[] = [
+            'name' => 'user_has_user_roles.read',
+            'description' => 'grant read access to user_has_user_roles',
+        ];
+        $seed[] = [
+            'name' => 'user_has_user_roles.update',
+            'description' => 'grant update access to user_has_user_roles',
+        ];
+        $seed[] = [
+            'name' => 'user_has_user_roles.delete',
+            'description' => 'grant delete access to user_has_user_roles',
+        ];
+
+        $seed[] = [
+            'name' => 'user_permissions.create',
+            'description' => 'grant create access to user_permissions',
+        ];
+        $seed[] = [
+            'name' => 'user_permissions.read',
+            'description' => 'grant read access to user_permissions',
+        ];
+        $seed[] = [
+            'name' => 'user_permissions.update',
+            'description' => 'grant update access to user_permissions',
+        ];
+        $seed[] = [
+            'name' => 'user_permissions.delete',
+            'description' => 'grant delete access to user_permissions',
+        ];
+
+        $seed[] = [
+            'name' => 'user_has_user_permissions.create',
+            'description' => 'grant create access to user_has_user_permissions',
+        ];
+        $seed[] = [
+            'name' => 'user_has_user_permissions.read',
+            'description' => 'grant read access to user_has_user_permissions',
+        ];
+        $seed[] = [
+            'name' => 'user_has_user_permissions.update',
+            'description' => 'grant update access to user_has_user_permissions',
+        ];
+        $seed[] = [
+            'name' => 'user_has_user_permissions.delete',
+            'description' => 'grant delete access to user_has_user_permissions',
+        ];
+
+        $seed[] = [
+            'name' => 'user_roles_has_user_permissions.create',
+            'description' => 'grant create access to user_roles_has_user_permissions',
+        ];
+        $seed[] = [
+            'name' => 'user_roles_has_user_permissions.read',
+            'description' => 'grant read access to user_roles_has_user_permissions',
+        ];
+        $seed[] = [
+            'name' => 'user_roles_has_user_permissions.update',
+            'description' => 'grant update access to user_roles_has_user_permissions',
+        ];
+        $seed[] = [
+            'name' => 'user_roles_has_user_permissions.delete',
+            'description' => 'grant delete access to user_roles_has_user_permissions',
+        ];
+
         $seed[] = [
             'name' => 'users.create',
             'description' => 'grant access to users creation',
@@ -73,6 +162,6 @@ class UserPermissionsTableSeeder extends Seeder
             'description' => 'delete users',
         ];
 
-        DB::table('user_roles')->insert($seed);
+        DB::table('user_permissions')->insert($seed);
     }
 }

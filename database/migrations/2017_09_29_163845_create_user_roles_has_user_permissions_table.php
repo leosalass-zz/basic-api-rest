@@ -15,8 +15,8 @@ class CreateUserRolesHasUserPermissionsTable extends Migration
     {
         Schema::create('user_roles_has_user_permissions', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_user_rol');
-            $table->integer('id_user_permission');
+            $table->integer('id_user_rol')->unsigned();
+            $table->integer('id_user_permission')->unsigned();
             $table->timestamps();
             $table->softDeletes();
         });

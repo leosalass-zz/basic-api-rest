@@ -16,14 +16,14 @@ class CreateUserHasUserRolesTable extends Migration
         Schema::create('user_has_user_roles', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_user')->unsigned();
-            $table->integer('id_rol')->unsigned();
+            $table->integer('id_user_rol')->unsigned();
             $table->timestamps();
             $table->softDeletes();
         });
 
         Schema::table('user_has_user_roles', function (Blueprint $table){
             $table->foreign('id_user')->references('id')->on('users');
-            $table->foreign('id_rol')->references('id')->on('user_roles');
+            $table->foreign('id_user_rol')->references('id')->on('user_roles');
         });
     }
 
