@@ -25,7 +25,7 @@ class CreateUserHasUserPermissionsTable extends Migration
         Schema::table('user_has_user_permissions', function (Blueprint $table){
             $table->foreign('id_user')->references('id')->on('users');
             $table->foreign('id_user_permission')->references('id')->on('user_permissions');
-            $table->unique(['id_user', 'id_permission'], 'user_permissions');
+            $table->unique(['id_user', 'id_user_permission'], 'user_permissions');
         });
     }
 
