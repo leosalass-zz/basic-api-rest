@@ -29,6 +29,10 @@ class UserRolesTableSeeder extends Seeder
             'name' => 'ceo',
             'description' => 'this is the bussiness CEO/OWNER, and he has limited access to his entired bussines, includes reports from all clients, sellers, etc..',
         ];
+        $seed[] = [
+            'name' => 'unregistered',
+            'description' => 'this is a public user',
+        ];
 
         DB::table('user_roles')->insert($seed);
     }

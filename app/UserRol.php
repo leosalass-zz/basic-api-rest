@@ -22,7 +22,6 @@ class UserRol extends Model
 
     public function permissions(){
         return $this->belongsToMany('App\UserPermission', 'user_roles_has_user_permissions', 'id_user_rol', 'id_user_permission')
-            ->withPivot('action')
             ->withTimestamps();
     }
 

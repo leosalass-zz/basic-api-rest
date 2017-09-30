@@ -15,7 +15,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'admin del sistema',
             'id_state' => '1',
             'email' => 'admin@admin.com',
-            'password' => bcrypt('secred'),
+            'password' => bcrypt('secret'),
         ];
 
         DB::table('users')->insert($seeds);
