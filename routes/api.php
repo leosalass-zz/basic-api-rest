@@ -42,4 +42,20 @@ Route::group(['prefix' => 'v1'], function () {
 
     });
 
+    /*
+     * ROLES ROUTES
+     */
+    Route::group(['prefix' => 'roles'], function () {
+
+        Route::post('', 'UserRolesController@store')->middleware(['ApplicationAccessControl:user_roles.create','auth:api']);
+        Route::get('', 'UserRolesController@get')->middleware(['ApplicationAccessControl:user_roles.read','auth:api']);
+        Route::patch('', 'UserRolesController@update')->middleware(['ApplicationAccessControl:user_roles.update','auth:api']);
+        Route::delete('', 'UserRolesController@destroy')->middleware(['ApplicationAccessControl:user_roles.delete','auth:api']);
+
+        Route::get('id/{id_rol}/permissions', 'UserRolesController@permissions')->middleware(['ApplicationAccessControl:user_roles_has_user_permissions.read','auth:api']);
+        Route::post('permissions', 'UserRolesController@add_permission')->middleware(['ApplicationAccessControl:user_roles_has_user_permissions.create','auth:api']);
+        Route::delete('permissions', 'UserRolesController@remove_permission')->middleware(['ApplicationAccessControl:user_roles_has_user_permissions.delete','auth:api']);
+
+    });
+
 });
