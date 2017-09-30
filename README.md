@@ -41,4 +41,10 @@ Route::get('id/{id_user}/roles', 'UsersController@roles')
 
 
 
-## documentacion de servicios (pendiente)
+## documentacion de servicios
+documentacion: https://github.com/mpociot/laravel-apidoc-generator/  
+  
+## Agradecimientos especiales:
+- Laravel team: Por este excelente framework   
+- mpociot: por su sistema de documentacion de apis, https://github.com/mpociot/laravel-apidoc-generator/  
+- stackoverflow: por su incontable cantidad de informacion que me sirvio de ayuda muchos de las dudas que se me presentaron.  

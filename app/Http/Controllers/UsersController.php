@@ -5,25 +5,14 @@ namespace App\Http\Controllers;
 use App\User;
 use Validator;
 use Illuminate\Http\Request;
+use App\Http\Requests\UsersCreateRequest;
+use App\Http\Requests\UsersUpdateRequest;
+
 
 class UsersController extends Controller
 {
-    public function store(Request $request)
+    public function store(UsersCreateRequest $request)
     {
-        $rules = [
-            'password' => 'required|string|min:6|confirmed',
-            'email' => 'required|string|email|max:255|unique:users',
-            'name' => 'required|string|max:99',
-        ];
-
-        $validator = Validator::make($request->all(), $rules);
-
-        if ($validator->fails()) {
-            ResponseController::set_errors(true);
-            ResponseController::set_messages($validator->errors()->toArray());
-            return ResponseController::response('BAD REQUEST');
-        }
-
         if (!$user = User::create([
             'email' => $request->email,
             'password' => bcrypt($request->password),
@@ -61,22 +50,8 @@ class UsersController extends Controller
         return ResponseController::response('OK');
     }
 
-    public function update(Request $request)
+    public function update(UsersUpdateRequest $request)
     {
-        $validator = Validator::make($request->all(), [
-            'id_user' => 'required|integer|min:1|exists:users,id',
-            'password' => 'nullable|string|min:6|confirmed',
-            'email' => 'nullable|string|email|max:255|unique:users',
-            'name' => 'nullable|string|max:99',
-            'state' => 'nullable|integer|min:1|exists:user_states,id',
-        ]);
-
-        if ($validator->fails()) {
-            ResponseController::set_errors(true);
-            ResponseController::set_messages($validator->errors()->toArray());
-            return ResponseController::response('BAD REQUEST');
-        }
-
         $user = User::find($request->id_user);
         if (isset($request->password)) {
             $user->password = $request->password;

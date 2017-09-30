@@ -21,7 +21,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
  * USERS: no validation
  */
 Route::group(['prefix' => 'users'], function () {
-    Route::post('register', 'UsersController@register');
 });
 
 Route::group(['prefix' => 'v1'], function () {
@@ -30,6 +29,8 @@ Route::group(['prefix' => 'v1'], function () {
      * USERS ROUTES
      */
     Route::group(['prefix' => 'users'], function () {
+
+        Route::post('register', 'UsersController@store')->middleware(['ApplicationAccessControl:users.create']);;
 
         Route::post('', 'UsersController@store')->middleware(['ApplicationAccessControl:users.create', 'auth:api']);
         Route::get('id/{id_user}', 'UsersController@get')->middleware(['ApplicationAccessControl:users.read', 'auth:api']);
