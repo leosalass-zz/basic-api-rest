@@ -2,12 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Http\Controllers\ResponseController;
-use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Contracts\Validation\Validator;
-use App\Http\Requests\GenericResposeRequest;
-
 class UsersCreateRequest extends GenericResposeRequest
 {
     /**
