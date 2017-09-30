@@ -24,6 +24,7 @@ class CreateUserRolesHasUserPermissionsTable extends Migration
         Schema::table('user_roles_has_user_permissions', function (Blueprint $table){
             $table->foreign('id_user_rol')->references('id')->on('user_roles');
             $table->foreign('id_user_permission')->references('id')->on('user_permissions');
+            $table->unique(['id_user_rol', 'id_user_permission'], 'rol_permissions');
         });
     }
 

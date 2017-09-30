@@ -24,6 +24,7 @@ class CreateUserHasUserRolesTable extends Migration
         Schema::table('user_has_user_roles', function (Blueprint $table){
             $table->foreign('id_user')->references('id')->on('users');
             $table->foreign('id_user_rol')->references('id')->on('user_roles');
+            $table->unique(['id_user', 'id_user_rol'], 'user_roles');
         });
     }
 
