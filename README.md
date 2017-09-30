@@ -42,21 +42,9 @@ todos las cuentas de acceso a la aplicacion.
 - asignar permisos de un usuario específico.    
   
 ## Seeders
-la aplicacion ya viene parametrizada con los datos minimos requeridos, revisar los seeders para mayor información.  
+la aplicacion ya viene parametrizada con los datos minimos requeridos, revisar los seeders para mayor información.    
 
-## uso   
-- los diferentes permisos y roles pueden ser creados y asiganados mediante las rutas de apis disponibles  
-- para validar el acceso a un modulo especifico, se debe agregar el middleware ApplicationAccessControl con sus respectivas restricciones a la ruta deseada. Ej:  
-
-Route::get('id/{id_user}/roles', 'UsersController@roles')
-->middleware(['ApplicationAccessControl:user_has_user_roles.read','auth:api']);   
-  
-## Agradecimientos especiales:
-- Laravel team: Por este excelente framework   
-- mpociot: por su sistema de documentacion de apis, https://github.com/mpociot/laravel-apidoc-generator/  
-- stackoverflow: por su incontable cantidad de informacion que me sirvio de ayuda muchos de las dudas que se me presentaron.  
-
-## Instrucciones
+## Instrucciones  
 a continuación se describen las intrucciones básicas para poner en marcha el proyecto y conectarse desde postman.  
 
 ### env file  
@@ -103,6 +91,15 @@ Nota: CLIENT_ID_FROM_DB y SECRET_KEY_FROM_DB ambos estan en la Tabla oauth_clien
 
 Nota: YOUR_ACCESS_TOKEN se obtiene en la respuesta de el paso anterior.  
 
+
+## Configuracion de nuevos modulos   
+Los diferentes permisos y roles pueden ser creados y asiganados mediante las rutas de apis disponibles, para validar el acceso a un modulo especifico, se debe agregar el middleware ApplicationAccessControl con sus respectivas restricciones a la ruta deseada. Ej:  
+- Route::get('id/{id_user}/roles', 'UsersController@roles')->middleware(['ApplicationAccessControl:user_has_user_roles.read','auth:api']);   
+  
+## Agradecimientos especiales:
+- Laravel team: Por este excelente framework   
+- mpociot: por su sistema de documentacion de apis, https://github.com/mpociot/laravel-apidoc-generator/  
+- stackoverflow: por su incontable cantidad de informacion que me sirvio de ayuda muchos de las dudas que se me presentaron.  
  
 # Contacto y soporte  
 Para soporte personalizado me pueden contactar a través del correo: leosalass@gmail.com
