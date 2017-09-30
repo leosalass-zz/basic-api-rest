@@ -94,7 +94,8 @@ Nota: YOUR_ACCESS_TOKEN se obtiene en la respuesta de el paso anterior.
 
 ## Configuracion de nuevos modulos   
 Los diferentes permisos y roles pueden ser creados y asiganados mediante las rutas de apis disponibles, para validar el acceso a un modulo especifico, se debe agregar el middleware ApplicationAccessControl con sus respectivas restricciones a la ruta deseada. Ej:  
-- Route::get('id/{id_user}/roles', 'UsersController@roles')->middleware(['ApplicationAccessControl:user_has_user_roles.read','auth:api']);   
+- Route::get('id/{id_user}/roles', 'UsersController@roles')
+->middleware(['ApplicationAccessControl:user_has_user_roles.read','auth:api']);   
   
 ## Agradecimientos especiales:
 - Laravel team: Por este excelente framework   
