@@ -142,7 +142,7 @@ class UserPermissionsTableSeeder extends Seeder
             'description' => 'grant read access to current user to the users',
         ];
         $seed[] = [
-            'name' => 'users.read.main',
+            'name' => 'users.read.mine',
             'description' => 'grant read access to current user to his users',
         ];
         $seed[] = [
@@ -154,12 +154,16 @@ class UserPermissionsTableSeeder extends Seeder
             'description' => 'grant update access to current user to his users',
         ];
         $seed[] = [
-            'name' => 'users.ban',
-            'description' => 'ban user',
-        ];
-        $seed[] = [
             'name' => 'users.delete',
             'description' => 'delete users',
+        ];
+        $seed[] = [
+            'name' => 'users.delete.mine',
+            'description' => 'delete users',
+        ];
+        $seed[] = [
+            'name' => 'users.ban',
+            'description' => 'ban user',
         ];
 
         DB::table('user_permissions')->insert($seed);

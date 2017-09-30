@@ -4,11 +4,14 @@ Implemantacion de Laravel 5.5 con el sistema de API Authentication (passport), y
 
 
 ##Permisos
-Los persmisos permiten acceso a los usuarios a los diferentes modulos de la aplicacion, para el sistema implementado en este proyecto, cada modulo tendra cuatro permisos básicos(Crete, Read, Update, Delele) Descritos de la siguiente forma:  
-- nombre_del_modulo.c  
-- nombre_del_modulo.r  
-- nombre_del_modulo.u  
-- nombre_del_modulo.d
+Los persmisos permiten acceso a los usuarios a los diferentes modulos de la aplicacion, para el sistema implementado en este proyecto, cada modulo tendra unos permisos básicos(Crete, Read, Update, Delele) Descritos de la siguiente forma:  
+- nombre_del_modulo.create  
+- nombre_del_modulo.read  
+- nombre_del_modulo.read.mine
+- nombre_del_modulo.update  
+- nombre_del_modulo.update.mine  
+- nombre_del_modulo.delete
+- nombre_del_modulo.delete.mine
 
 ###Opciones disponibles  
 - asignar o retirar permisos de un usuario específico.  

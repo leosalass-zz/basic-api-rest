@@ -26,7 +26,7 @@ class AddStatesForeignToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign('id_state');
+            $table->index('id_state');
         });
     }
 }
