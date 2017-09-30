@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
-    public function register(Request $request)
+    public function store(Request $request)
     {
         $rules = [
             'password' => 'required|string|min:6|confirmed',
@@ -37,6 +37,97 @@ class UsersController extends Controller
         ResponseController::set_messages("usuario creado");
         ResponseController::set_data(['user_id' => $user->id]);
         return ResponseController::response('CREATED');
+    }
+
+    public function get($id_user)
+    {
+        $validator = Validator::make(['id_user' => $id_user], [
+            'id_user' => 'required|integer|min:1|exists:users,id',
+        ]);
+
+        if ($validator->fails()) {
+            ResponseController::set_errors(true);
+            ResponseController::set_messages($validator->errors()->toArray());
+            return ResponseController::response('BAD REQUEST');
+        }
+
+        ResponseController::set_data(['user' => User::find($id_user)]);
+        return ResponseController::response('OK');
+    }
+
+    public function get_all()
+    {
+        ResponseController::set_data(['users' => User::all()]);
+        return ResponseController::response('OK');
+    }
+
+    public function update(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'id_user' => 'required|integer|min:1|exists:users,id',
+            'password' => 'nullable|string|min:6|confirmed',
+            'email' => 'nullable|string|email|max:255|unique:users',
+            'name' => 'nullable|string|max:99',
+            'state' => 'nullable|integer|min:1|exists:user_states,id',
+        ]);
+
+        if ($validator->fails()) {
+            ResponseController::set_errors(true);
+            ResponseController::set_messages($validator->errors()->toArray());
+            return ResponseController::response('BAD REQUEST');
+        }
+
+        $user = User::find($request->id_user);
+        if (isset($request->password)) {
+            $user->password = $request->password;
+        }
+        if (isset($request->email)) {
+            $user->email = $request->email;
+        }
+        if (isset($request->name)) {
+            $user->name = $request->name;
+        }
+        if (isset($request->state)) {
+            $user->state = $request->state;
+        }
+
+        try {
+            $user->save();
+        } catch (\Exception $e) {
+            ResponseController::set_errors(true);
+            ResponseController::set_messages("error creando el usuario");
+            ResponseController::set_messages($e->getMessage());
+            return ResponseController::response('BAD REQUEST');
+        }
+
+        ResponseController::set_messages("usuario actualizado");
+        return ResponseController::response('OK');
+
+    }
+
+    public function destroy(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'id_user' => 'required|integer|min:1|exists:users,id',
+        ]);
+
+        if ($validator->fails()) {
+            ResponseController::set_errors(true);
+            ResponseController::set_messages($validator->errors()->toArray());
+            return ResponseController::response('BAD REQUEST');
+        }
+
+        try {
+            User::destroy($request->id_user);
+        }catch (\Exception $e){
+            ResponseController::set_errors(true);
+            ResponseController::set_messages("error eliminado el usuario");
+            ResponseController::set_messages($e->getMessage());
+            return ResponseController::response('BAD REQUEST');
+        }
+
+        ResponseController::set_messages("usuario eliminado");
+        return ResponseController::response('OK');
     }
 
     public function roles($id_user)

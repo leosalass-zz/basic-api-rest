@@ -31,11 +31,16 @@ Route::group(['prefix' => 'v1'], function () {
      */
     Route::group(['prefix' => 'users'], function () {
 
-        Route::post('register', 'UsersController@register')->middleware(['ApplicationAccessControl:users.create', 'auth:api']);
+        Route::post('', 'UsersController@store')->middleware(['ApplicationAccessControl:users.create', 'auth:api']);
+        Route::get('id/{id_user}', 'UsersController@get')->middleware(['ApplicationAccessControl:users.read', 'auth:api']);
+        Route::get('', 'UsersController@get_all')->middleware(['ApplicationAccessControl:users.read', 'auth:api']);
+        Route::patch('', 'UsersController@update')->middleware(['ApplicationAccessControl:users.update', 'auth:api']);
+        Route::delete('', 'UsersController@destroy')->middleware(['ApplicationAccessControl:users.delete', 'auth:api']);
 
         Route::get('id/{id_user}/roles', 'UsersController@roles')->middleware(['ApplicationAccessControl:user_has_user_roles.read', 'auth:api']);
         Route::post('roles', 'UsersController@add_rol')->middleware(['ApplicationAccessControl:user_has_user_roles.create', 'auth:api']);
         Route::delete('roles', 'UsersController@remove_rol')->middleware(['ApplicationAccessControl:user_has_user_roles.delete', 'auth:api']);
+
         Route::get('id/{id_user}/permissions', 'UsersController@permissions')->middleware(['ApplicationAccessControl:user_permissions.read', 'auth:api']);
         Route::post('permissions', 'UsersController@add_permission')->middleware(['ApplicationAccessControl:user_permissions.create', 'auth:api']);
         Route::delete('permissions', 'UsersController@remove_permission')->middleware(['ApplicationAccessControl:user_permissions.delete', 'auth:api']);

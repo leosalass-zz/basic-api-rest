@@ -21,7 +21,7 @@ mediante la cración de roles, se definen permisos especificos para un tipo de u
 
 ### opciones
 - crear usuarios  
-- listar, actualizar, eliminar usuarios (pendiente)    
+- listar, actualizar, eliminar usuarios  
 - crear, listar, actualizar y eliminar permisos   
 - crear, listar, actualizar y eliminar roles  
 - asignar y eliminar permisos en un rol 
