@@ -264,7 +264,9 @@ Parameter | Type | Status | Description
 
 ```bash
 curl -X DELETE "http://localhost/api/v1/users" \
--H "Accept: application/json"
+-H "Accept: application/json" \
+    -d "id_user"="323065242" \
+
 ```
 
 ```javascript
@@ -273,6 +275,9 @@ var settings = {
     "crossDomain": true,
     "url": "http://localhost/api/v1/users",
     "method": "DELETE",
+    "data": {
+        "id_user": 323065242
+},
     "headers": {
         "accept": "application/json"
     }
@@ -287,6 +292,11 @@ $.ajax(settings).done(function (response) {
 ### HTTP Request
 `DELETE api/v1/users`
 
+#### Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    id_user | integer |  required  | Minimum: `1` Valid user id
 
 <!-- END_1143e0cd893b8e0d578684bbcda58f34 -->
 
@@ -339,7 +349,10 @@ $.ajax(settings).done(function (response) {
 
 ```bash
 curl -X POST "http://localhost/api/v1/users/roles" \
--H "Accept: application/json"
+-H "Accept: application/json" \
+    -d "id_user"="872884868" \
+    -d "id_rol"="872884868" \
+
 ```
 
 ```javascript
@@ -348,6 +361,10 @@ var settings = {
     "crossDomain": true,
     "url": "http://localhost/api/v1/users/roles",
     "method": "POST",
+    "data": {
+        "id_user": 872884868,
+        "id_rol": 872884868
+},
     "headers": {
         "accept": "application/json"
     }
@@ -362,6 +379,12 @@ $.ajax(settings).done(function (response) {
 ### HTTP Request
 `POST api/v1/users/roles`
 
+#### Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    id_user | integer |  required  | Minimum: `1` Valid user id
+    id_rol | integer |  required  | Minimum: `1` Valid user_role id
 
 <!-- END_e9f6de252b9dd1a156d7def454a01c6e -->
 
@@ -372,7 +395,10 @@ $.ajax(settings).done(function (response) {
 
 ```bash
 curl -X DELETE "http://localhost/api/v1/users/roles" \
--H "Accept: application/json"
+-H "Accept: application/json" \
+    -d "id_user"="814230219" \
+    -d "id_rol"="814230219" \
+
 ```
 
 ```javascript
@@ -381,6 +407,10 @@ var settings = {
     "crossDomain": true,
     "url": "http://localhost/api/v1/users/roles",
     "method": "DELETE",
+    "data": {
+        "id_user": 814230219,
+        "id_rol": 814230219
+},
     "headers": {
         "accept": "application/json"
     }
@@ -395,6 +425,12 @@ $.ajax(settings).done(function (response) {
 ### HTTP Request
 `DELETE api/v1/users/roles`
 
+#### Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    id_user | integer |  required  | Minimum: `1` Valid user id
+    id_rol | integer |  required  | Minimum: `1` Valid user_role id
 
 <!-- END_90ce46336c4cfd437aa4143126c03f1e -->
 
@@ -447,7 +483,11 @@ $.ajax(settings).done(function (response) {
 
 ```bash
 curl -X POST "http://localhost/api/v1/users/permissions" \
--H "Accept: application/json"
+-H "Accept: application/json" \
+    -d "id_user"="280086151" \
+    -d "id_permission"="280086151" \
+    -d "action"="add" \
+
 ```
 
 ```javascript
@@ -456,6 +496,11 @@ var settings = {
     "crossDomain": true,
     "url": "http://localhost/api/v1/users/permissions",
     "method": "POST",
+    "data": {
+        "id_user": 280086151,
+        "id_permission": 280086151,
+        "action": "add"
+},
     "headers": {
         "accept": "application/json"
     }
@@ -470,6 +515,13 @@ $.ajax(settings).done(function (response) {
 ### HTTP Request
 `POST api/v1/users/permissions`
 
+#### Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    id_user | integer |  required  | Minimum: `1` Valid user id
+    id_permission | integer |  required  | Minimum: `1` Valid user_permission id
+    action | string |  required  | Minimum: `1` `add` or `remove`
 
 <!-- END_63ac096fb771165ee332dfbb1bd8d000 -->
 
@@ -480,7 +532,10 @@ $.ajax(settings).done(function (response) {
 
 ```bash
 curl -X DELETE "http://localhost/api/v1/users/permissions" \
--H "Accept: application/json"
+-H "Accept: application/json" \
+    -d "id_user"="229433814" \
+    -d "id_permission"="229433814" \
+
 ```
 
 ```javascript
@@ -489,6 +544,10 @@ var settings = {
     "crossDomain": true,
     "url": "http://localhost/api/v1/users/permissions",
     "method": "DELETE",
+    "data": {
+        "id_user": 229433814,
+        "id_permission": 229433814
+},
     "headers": {
         "accept": "application/json"
     }
@@ -503,6 +562,12 @@ $.ajax(settings).done(function (response) {
 ### HTTP Request
 `DELETE api/v1/users/permissions`
 
+#### Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    id_user | integer |  required  | Minimum: `1` Valid user id
+    id_permission | integer |  required  | Minimum: `1` Valid user_permission id
 
 <!-- END_9ce479912c3b286cdb96d9497384b3bd -->
 
@@ -513,7 +578,10 @@ $.ajax(settings).done(function (response) {
 
 ```bash
 curl -X POST "http://localhost/api/v1/roles" \
--H "Accept: application/json"
+-H "Accept: application/json" \
+    -d "name"="quae" \
+    -d "description"="quae" \
+
 ```
 
 ```javascript
@@ -522,6 +590,10 @@ var settings = {
     "crossDomain": true,
     "url": "http://localhost/api/v1/roles",
     "method": "POST",
+    "data": {
+        "name": "quae",
+        "description": "quae"
+},
     "headers": {
         "accept": "application/json"
     }
@@ -536,6 +608,12 @@ $.ajax(settings).done(function (response) {
 ### HTTP Request
 `POST api/v1/roles`
 
+#### Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    name | string |  required  | Maximum: `45`
+    description | string |  required  | Maximum: `255`
 
 <!-- END_5f753b2bffb6b34b6136ddfe1be7bcce -->
 
@@ -588,7 +666,11 @@ $.ajax(settings).done(function (response) {
 
 ```bash
 curl -X PATCH "http://localhost/api/v1/roles" \
--H "Accept: application/json"
+-H "Accept: application/json" \
+    -d "id_rol"="4757" \
+    -d "name"="vel" \
+    -d "description"="vel" \
+
 ```
 
 ```javascript
@@ -597,6 +679,11 @@ var settings = {
     "crossDomain": true,
     "url": "http://localhost/api/v1/roles",
     "method": "PATCH",
+    "data": {
+        "id_rol": 4757,
+        "name": "vel",
+        "description": "vel"
+},
     "headers": {
         "accept": "application/json"
     }
@@ -611,6 +698,13 @@ $.ajax(settings).done(function (response) {
 ### HTTP Request
 `PATCH api/v1/roles`
 
+#### Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    id_rol | integer |  required  | Valid user_role id
+    name | string |  required  | Maximum: `45`
+    description | string |  required  | Maximum: `255`
 
 <!-- END_6d9fbad03392895d5be6aa1356912199 -->
 
@@ -621,7 +715,9 @@ $.ajax(settings).done(function (response) {
 
 ```bash
 curl -X DELETE "http://localhost/api/v1/roles" \
--H "Accept: application/json"
+-H "Accept: application/json" \
+    -d "id_rol"="7" \
+
 ```
 
 ```javascript
@@ -630,6 +726,9 @@ var settings = {
     "crossDomain": true,
     "url": "http://localhost/api/v1/roles",
     "method": "DELETE",
+    "data": {
+        "id_rol": 7
+},
     "headers": {
         "accept": "application/json"
     }
@@ -644,6 +743,11 @@ $.ajax(settings).done(function (response) {
 ### HTTP Request
 `DELETE api/v1/roles`
 
+#### Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    id_rol | integer |  required  | Valid user_role id
 
 <!-- END_debddd110e7ecbf60049a48398d280f3 -->
 
@@ -696,7 +800,10 @@ $.ajax(settings).done(function (response) {
 
 ```bash
 curl -X POST "http://localhost/api/v1/roles/permissions" \
--H "Accept: application/json"
+-H "Accept: application/json" \
+    -d "id_rol"="2004563015" \
+    -d "id_permission"="2004563015" \
+
 ```
 
 ```javascript
@@ -705,6 +812,10 @@ var settings = {
     "crossDomain": true,
     "url": "http://localhost/api/v1/roles/permissions",
     "method": "POST",
+    "data": {
+        "id_rol": 2004563015,
+        "id_permission": 2004563015
+},
     "headers": {
         "accept": "application/json"
     }
@@ -719,6 +830,12 @@ $.ajax(settings).done(function (response) {
 ### HTTP Request
 `POST api/v1/roles/permissions`
 
+#### Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    id_rol | integer |  required  | Minimum: `1` Valid user_role id
+    id_permission | integer |  required  | Minimum: `1` Valid user_permission id
 
 <!-- END_5ea13c01baf1124bd41ccce2611adf16 -->
 
@@ -729,7 +846,10 @@ $.ajax(settings).done(function (response) {
 
 ```bash
 curl -X DELETE "http://localhost/api/v1/roles/permissions" \
--H "Accept: application/json"
+-H "Accept: application/json" \
+    -d "id_rol"="44680477" \
+    -d "id_permission"="44680477" \
+
 ```
 
 ```javascript
@@ -738,6 +858,10 @@ var settings = {
     "crossDomain": true,
     "url": "http://localhost/api/v1/roles/permissions",
     "method": "DELETE",
+    "data": {
+        "id_rol": 44680477,
+        "id_permission": 44680477
+},
     "headers": {
         "accept": "application/json"
     }
@@ -752,6 +876,12 @@ $.ajax(settings).done(function (response) {
 ### HTTP Request
 `DELETE api/v1/roles/permissions`
 
+#### Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    id_rol | integer |  required  | Minimum: `1` Valid user_role id
+    id_permission | integer |  required  | Minimum: `1` Valid user_permission id
 
 <!-- END_9dc210527f093bae6224abf31815b648 -->
 
@@ -762,7 +892,10 @@ $.ajax(settings).done(function (response) {
 
 ```bash
 curl -X POST "http://localhost/api/v1/permissions" \
--H "Accept: application/json"
+-H "Accept: application/json" \
+    -d "name"="illo" \
+    -d "description"="illo" \
+
 ```
 
 ```javascript
@@ -771,6 +904,10 @@ var settings = {
     "crossDomain": true,
     "url": "http://localhost/api/v1/permissions",
     "method": "POST",
+    "data": {
+        "name": "illo",
+        "description": "illo"
+},
     "headers": {
         "accept": "application/json"
     }
@@ -785,6 +922,12 @@ $.ajax(settings).done(function (response) {
 ### HTTP Request
 `POST api/v1/permissions`
 
+#### Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    name | string |  required  | Maximum: `45`
+    description | string |  required  | Maximum: `255`
 
 <!-- END_defb597dbd6eb21dee1f472ef6340873 -->
 
@@ -837,7 +980,11 @@ $.ajax(settings).done(function (response) {
 
 ```bash
 curl -X PATCH "http://localhost/api/v1/permissions" \
--H "Accept: application/json"
+-H "Accept: application/json" \
+    -d "id_permission"="817" \
+    -d "name"="exercitationem" \
+    -d "description"="exercitationem" \
+
 ```
 
 ```javascript
@@ -846,6 +993,11 @@ var settings = {
     "crossDomain": true,
     "url": "http://localhost/api/v1/permissions",
     "method": "PATCH",
+    "data": {
+        "id_permission": 817,
+        "name": "exercitationem",
+        "description": "exercitationem"
+},
     "headers": {
         "accept": "application/json"
     }
@@ -860,6 +1012,13 @@ $.ajax(settings).done(function (response) {
 ### HTTP Request
 `PATCH api/v1/permissions`
 
+#### Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    id_permission | integer |  required  | Valid user_permission id
+    name | string |  required  | Maximum: `45`
+    description | string |  required  | Maximum: `255`
 
 <!-- END_03e7e0be479e376ac3caa8cd8da1cb7c -->
 
@@ -870,7 +1029,9 @@ $.ajax(settings).done(function (response) {
 
 ```bash
 curl -X DELETE "http://localhost/api/v1/permissions" \
--H "Accept: application/json"
+-H "Accept: application/json" \
+    -d "id_permission"="61895134" \
+
 ```
 
 ```javascript
@@ -879,6 +1040,9 @@ var settings = {
     "crossDomain": true,
     "url": "http://localhost/api/v1/permissions",
     "method": "DELETE",
+    "data": {
+        "id_permission": 61895134
+},
     "headers": {
         "accept": "application/json"
     }
@@ -893,6 +1057,11 @@ $.ajax(settings).done(function (response) {
 ### HTTP Request
 `DELETE api/v1/permissions`
 
+#### Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    id_permission | integer |  required  | Valid user_permission id
 
 <!-- END_860c85f1db72e5b3fd1911fac4889f67 -->
 

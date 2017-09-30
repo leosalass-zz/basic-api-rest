@@ -48,3 +48,6 @@ documentacion: https://github.com/mpociot/laravel-apidoc-generator/
 - Laravel team: Por este excelente framework   
 - mpociot: por su sistema de documentacion de apis, https://github.com/mpociot/laravel-apidoc-generator/  
 - stackoverflow: por su incontable cantidad de informacion que me sirvio de ayuda muchos de las dudas que se me presentaron.  
+
+## Contacto y soporte  
+Para soporte personalizado me pueden contactar a través del correo: leosalass@gmail.com

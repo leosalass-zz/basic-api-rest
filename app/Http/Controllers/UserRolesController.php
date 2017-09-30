@@ -5,22 +5,16 @@ namespace App\Http\Controllers;
 use App\UserRol;
 use Validator;
 use Illuminate\Http\Request;
+use App\Http\Requests\RolStoreRequest;
+use App\Http\Requests\RolUpdateRequest;
+use App\Http\Requests\RolDestroyRequest;
+use App\Http\Requests\RolPermissionAddRequest;
+use App\Http\Requests\RolPermissionRemoveRequest;
 
 class UserRolesController extends Controller
 {
-    public function store(Request $request)
+    public function store(RolStoreRequest $request)
     {
-        $validator = Validator::make($request->toArray(), [
-            'name' => 'required|string|max:45',
-            'description' => 'required|string|max:255',
-        ]);
-
-        if ($validator->fails()) {
-            ResponseController::set_errors(true);
-            ResponseController::set_messages($validator->errors()->toArray());
-            return ResponseController::response('BAD REQUEST');
-        }
-
         if (!$rol = UserRol::create([
             'name' => $request->name,
             'description' => $request->description,
@@ -41,20 +35,8 @@ class UserRolesController extends Controller
         return ResponseController::response('OK');
     }
 
-    public function update(Request $request)
+    public function update(RolUpdateRequest $request)
     {
-        $validator = Validator::make($request->toArray(), [
-            'id_rol' => 'required|integer|exists:user_roles,id',
-            'name' => 'required|string|max:45',
-            'description' => 'required|string|max:255',
-        ]);
-
-        if ($validator->fails()) {
-            ResponseController::set_errors(true);
-            ResponseController::set_messages($validator->errors()->toArray());
-            return ResponseController::response('BAD REQUEST');
-        }
-
         try {
             $rol = UserRol::find($request->id_rol);
             $rol->name = $request->name;
@@ -72,18 +54,8 @@ class UserRolesController extends Controller
         return ResponseController::response('OK');
     }
 
-    public function destroy(Request $request)
+    public function destroy(RolDestroyRequest $request)
     {
-        $validator = Validator::make($request->toArray(), [
-            'id_rol' => 'required|integer|exists:user_roles,id',
-        ]);
-
-        if ($validator->fails()) {
-            ResponseController::set_errors(true);
-            ResponseController::set_messages($validator->errors()->toArray());
-            return ResponseController::response('BAD REQUEST');
-        }
-
         try {
             UserRol::destroy($request->id_rol);
         } catch (\Exception $e) {
@@ -123,19 +95,8 @@ class UserRolesController extends Controller
         return ResponseController::response('OK');
     }
 
-    public function add_permission(Request $request)
+    public function add_permission(RolPermissionAddRequest $request)
     {
-        $validator = Validator::make($request->toArray(), [
-            'id_rol' => 'required|integer|min:1|exists:user_roles,id',
-            'id_permission' => 'required|integer|min:1|exists:user_permissions,id',
-        ]);
-
-        if ($validator->fails()) {
-            ResponseController::set_errors(true);
-            ResponseController::set_messages($validator->errors()->toArray());
-            return ResponseController::response('BAD REQUEST');
-        }
-
         $rol = UserRol::find($request->id_rol);
 
         try {
@@ -151,19 +112,8 @@ class UserRolesController extends Controller
         return ResponseController::response('OK');
     }
 
-    public function remove_permission(Request $request)
+    public function remove_permission(RolPermissionRemoveRequest $request)
     {
-        $validator = Validator::make($request->toArray(), [
-            'id_rol' => 'required|integer|min:1|exists:user_roles,id',
-            'id_permission' => 'required|integer|min:1|exists:user_permissions,id',
-        ]);
-
-        if ($validator->fails()) {
-            ResponseController::set_errors(true);
-            ResponseController::set_messages($validator->errors()->toArray());
-            return ResponseController::response('BAD REQUEST');
-        }
-
         $rol = UserRol::find($request->id_rol);
 
         try {

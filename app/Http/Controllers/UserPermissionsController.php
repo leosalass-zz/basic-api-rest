@@ -5,22 +5,14 @@ namespace App\Http\Controllers;
 use App\UserPermission;
 use Validator;
 use Illuminate\Http\Request;
+use App\Http\Requests\PermissionStoreRequest;
+use App\Http\Requests\PermissionUpdateRequest;
+use App\Http\Requests\PermissionDestroyRequest;
 
 class UserPermissionsController extends Controller
 {
-    public function store(Request $request)
+    public function store(PermissionStoreRequest $request)
     {
-        $validator = Validator::make($request->toArray(), [
-            'name' => 'required|string|max:45',
-            'description' => 'required|string|max:255',
-        ]);
-
-        if ($validator->fails()) {
-            ResponseController::set_errors(true);
-            ResponseController::set_messages($validator->errors()->toArray());
-            return ResponseController::response('BAD REQUEST');
-        }
-
         if (!$permission = UserPermission::create([
             'name' => $request->name,
             'description' => $request->description,
@@ -41,20 +33,8 @@ class UserPermissionsController extends Controller
         return ResponseController::response('OK');
     }
 
-    public function update(Request $request)
+    public function update(PermissionUpdateRequest $request)
     {
-        $validator = Validator::make($request->toArray(), [
-            'id_permission' => 'required|integer|exists:user_permissions,id',
-            'name' => 'required|string|max:45',
-            'description' => 'required|string|max:255',
-        ]);
-
-        if ($validator->fails()) {
-            ResponseController::set_errors(true);
-            ResponseController::set_messages($validator->errors()->toArray());
-            return ResponseController::response('BAD REQUEST');
-        }
-
         try {
             $permission = UserPermission::find($request->id_permission);
             $permission->name = $request->name;
@@ -72,18 +52,8 @@ class UserPermissionsController extends Controller
         return ResponseController::response('OK');
     }
 
-    public function destroy(Request $request)
+    public function destroy(PermissionDestroyRequest $request)
     {
-        $validator = Validator::make($request->toArray(), [
-            'id_permission' => 'required|integer|exists:user_permissions,id',
-        ]);
-
-        if ($validator->fails()) {
-            ResponseController::set_errors(true);
-            ResponseController::set_messages($validator->errors()->toArray());
-            return ResponseController::response('BAD REQUEST');
-        }
-
         try {
             UserPermission::destroy($request->id_permission);
         } catch (\Exception $e) {
