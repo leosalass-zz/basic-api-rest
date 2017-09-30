@@ -30,14 +30,7 @@ Route::group(['prefix' => 'v1'], function () {
      * USERS ROUTES
      */
     Route::group(['prefix' => 'users'], function () {
-        Route::group(['prefix' => 'register', 'middleware' =>
-            [
-                'ApplicationAccessControl:users.create',
-                'auth:api',
-            ]
-        ], function () {
-            Route::post('', 'UsersController@register');
-        });
+        Route::post('register', 'UsersController@register')->middleware(['ApplicationAccessControl:users.create','auth:api']);
     });
 
 });
