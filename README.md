@@ -71,6 +71,7 @@ en la consola ir a root del proyecto y ejecutar los siguientes comandos (si usa 
 - php artisan migrate  
 - php artisan passport:install -- force  
 - php artisan passport:keys  
+- php artisan db:seed
 
 ## documentacion de servicios y accesos a los mismos  
 
