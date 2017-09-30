@@ -50,16 +50,56 @@ la aplicacion ya viene parametrizada con los datos minimos requeridos, revisar l
 
 Route::get('id/{id_user}/roles', 'UsersController@roles')
 ->middleware(['ApplicationAccessControl:user_has_user_roles.read','auth:api']);   
-
-
-
-## documentacion de servicios
-documentacion: https://github.com/mpociot/laravel-apidoc-generator/  
   
 ## Agradecimientos especiales:
 - Laravel team: Por este excelente framework   
 - mpociot: por su sistema de documentacion de apis, https://github.com/mpociot/laravel-apidoc-generator/  
 - stackoverflow: por su incontable cantidad de informacion que me sirvio de ayuda muchos de las dudas que se me presentaron.  
 
-## Contacto y soporte  
+## Instrucciones
+a continuación se describen las intrucciones básicas para poner en marcha el proyecto y conectarse desde postman.  
+
+### env file  
+renombrar el archivo .env.example a .env
+
+### consola / terminal   
+en la consola ir a root del proyecto y ejecutar los siguientes comandos (si usa vagrant para los comandos que interactuen con la dase de datos, debe ingresar a la maquina por ssh, https://confluence.jetbrains.com/display/PhpStorm/Working+with+Advanced+Vagrant+features+in+PhpStorm):
+- composer update  
+- php artisan key:generate  
+- opcional: vendor\bin\homestead make  
+- opcional: vagrant up  
+- php artisan migrate  
+- php artisan passport:install -- force  
+- php artisan passport:keys  
+
+## documentacion de servicios y accesos a los mismos  
+
+### Generar la documentacion de la rutas API  
+- php artisan api:gen --routePrefix="settings/api/*"  
+
+### visualizar la ducumentacion de las rutas API
+- NOMBRE_DEL_SITIO/docs/index.html  
+
+documentacion: https://github.com/mpociot/laravel-apidoc-generator/ 
+
+## Obtener Token de Acceso  
+- POST: http://share-your-plate.app/oauth/token  
+- Body:  
+-- grant_type: password  
+-- client_id: CLIENT_ID_FROM_DB   
+-- client_secret: SECRET_KEY_FROM_DB  
+-- username: admin@admin.com  
+-- password: secret  
+
+Nota: CLIENT_ID_FROM_DB y SECRET_KEY_FROM_DB ambos estan en la Tabla oauth_clients, debe tomar el registro con el nombre "Laravel Password Grant Client". Para proyectos nuevos este ID es 2.    
+  
+## Consumir los tokens de acceso  
+### Headers  
+- Accept: application/json  
+- Authorization: Bearer YOUR_ACCESS_TOKEN  
+
+Nota: YOUR_ACCESS_TOKEN se obtiene en la respuesta de el paso anterior.  
+
+ 
+# Contacto y soporte  
 Para soporte personalizado me pueden contactar a través del correo: leosalass@gmail.com
