@@ -84,7 +84,7 @@ en la consola ir a root del proyecto y ejecutar los siguientes comandos (si usa 
 documentacion: https://github.com/mpociot/laravel-apidoc-generator/ 
 
 ## Obtener Token de Acceso  
-Para esta documentación se usará el usuario que por defecto en el seeder, pero cada usuario deberà obtener su propio token de acceso  
+Para esta documentación se usará el usuario generadp por defecto en el seeder, pero cada usuario deberà obtener su propio token de acceso  
  
 - POST: http://share-your-plate.app/oauth/token  
 - Body:  
