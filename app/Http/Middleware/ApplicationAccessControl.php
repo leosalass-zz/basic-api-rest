@@ -32,6 +32,28 @@ class ApplicationAccessControl
             }
         }
 
+        if($user = Auth::user()) {
+            foreach ($user->permissions as $permission) {
+                $action = $permission->pivot->action;
+                $name = $permission->name;
+
+                $array_key = array_search($name, $permissions);
+                switch ($action) {
+                    case 'remove':
+                        if (in_array($name, $permissions)) {
+                            unset($permissions[$array_key]);
+                        }
+                        break;
+
+                    case 'add':
+                        if (!in_array($name, $permissions)) {
+                            $permissions[] = $name;
+                        }
+                        break;
+                }
+            }
+        }
+
         if (in_array('crud.all', $permissions)) {
             return $next($request);
         }
