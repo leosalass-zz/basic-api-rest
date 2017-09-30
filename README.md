@@ -1,34 +1,46 @@
 # Descipción
 
-Implemantación de Laravel 5.5 con el sistema de API Authentication (passport), y un sistemas de control de acceso mediante el uso de roles y permisos. con este sistema se pretende garantizar un correcto control de acceso a las aplicaciones, sin importar cuantos diferentes roles puedan requrir, ya que el sistema es validado contra los permisos disponibles de los usuarios segun sus roles, y permisos asignados o bloqueados directamente.   
+Implemantación de un sistema de control de acceso mediante el uso de roles y permisos, haciendo uso de Laravel 5.5, Laravel passport, mpociot/laravel-apidoc-generator. Con este proyecto se pretende garantizar un correcto control de acceso a las aplicaciones, sin importar cuantos diferentes roles pueda requrir un mismo usuario, ya que el sistema es validado contra los permisos disponibles de los usuarios segun sus roles, y permisos asignados o bloqueados directamente.   
 
 ## Permisos
 Los persmisos permiten acceso a los usuarios a los diferentes modulos de la aplicacion, para el sistema implementado en este proyecto, cada modulo tendra unos permisos básicos descritos a continuación:  
-- nombre_del_modulo.create  
-- nombre_del_modulo.read  
-- nombre_del_modulo.read.mine  
-- nombre_del_modulo.update  
-- nombre_del_modulo.update.mine  
-- nombre_del_modulo.delete  
-- nombre_del_modulo.delete.mine  
+- modulo.create  
+- modulo.read  
+- modulo.read.mine  
+- modulo.update  
+- modulo.update.mine  
+- modulo.delete  
+- modulo.delete.mine   
 
 ### Opciones disponibles  
-- asignar o retirar permisos de un usuario específico.  
-- asignar permisos a un rol específico
+- crear Permisos  
+- eliminar permisos  
 
 ## Roles
-mediante la cración de roles, se definen permisos especificos para un tipo de usuario.
+mediante la cración de roles, se definen permisos especificos para un tipo de usuario.  
 
-### opciones
-- crear usuarios  
-- listar, actualizar, eliminar usuarios  
-- crear, listar, actualizar y eliminar permisos   
-- crear, listar, actualizar y eliminar roles  
+### opciones disponibles  
+- crear roles  
+- listar roles  
+- actualizar roles  
+- eliminar roles    
 - asignar y eliminar permisos en un rol 
-- asignar y bloquear permisos en un usuario  
-- listar los roles de un usuario  
-- listar los permisos de un usuario  
 
+## Usuarios  
+todos las cuentas de acceso a la aplicacion.
+
+### opciones disponibles:  
+- crear usuarios    
+- listar usuarios  
+- actualizar usuarios  
+- eliminar usuarios        
+- listar roles de un usuario  
+- asignar roles de un usuario específico.  
+- retirar roles de un usuario específico.  
+- listar permisos de un usuario  
+- retirar permisos de un usuario específico.  
+- asignar permisos de un usuario específico.    
+  
 ## Seeders
 la aplicacion ya viene parametrizada con los datos minimos requeridos, revisar los seeders para mayor información.  
 
