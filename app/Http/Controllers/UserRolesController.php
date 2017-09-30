@@ -37,7 +37,6 @@ class UserRolesController extends Controller
 
     public function get()
     {
-        ResponseController::set_messages("rol creado");
         ResponseController::set_data(['roles' => UserRol::all()]);
         return ResponseController::response('OK');
     }
