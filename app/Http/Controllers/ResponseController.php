@@ -47,6 +47,7 @@ class ResponseController extends Controller
         [
             'errors' => false,
             'success' => false,
+            'status_code' => null,
             'messages' => [],
             'data' => []
         ];
@@ -61,6 +62,11 @@ class ResponseController extends Controller
         self::$response['errors'] = $errors;
     }
 
+    public static function set_status_code($status_code)
+    {
+        self::$response['status_code'] = $status_code;
+    }
+
     public static function set_messages($messges)
     {
         self::$response['messages'][] = $messges;
@@ -71,10 +77,14 @@ class ResponseController extends Controller
         self::$response['data'] = array_merge($data, self::$response['data']);
     }
 
-    public static function response($status)
+    public static function response($status = null)
     {
         if (!self::$response['errors']) {
             self::$response['success'] = true;
+        }
+
+        if(is_null($status)){
+            $status = self::$response['status_code'];
         }
         return response()->json(self::$response, self::$status_codes[$status]);
     }
