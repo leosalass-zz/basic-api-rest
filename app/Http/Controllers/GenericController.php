@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Validation\Rule;
 use Validator;
 use Illuminate\Http\Request;
+
 //TODO: se debe agregar arriba todos los modelos que se deseen usar con este controlador
 
 
@@ -81,5 +82,35 @@ class GenericController extends Controller
 
         ResponseController::set_messages("registro eliminado");
         return ResponseController::set_status_code('OK');
+    }
+
+    public static function get_childs($table, $id, $model, $function_name)
+    {
+        $validator = Validator::make(['id' => $id], [
+            'id' =>
+                [
+                    'required',
+                    Rule::exists($table, 'id')->where(function ($query) {
+                        $query->where('deleted_at', null);
+                    })
+                ],
+        ]);
+
+        if ($validator->fails()) {
+            ResponseController::set_errors(true);
+            ResponseController::set_messages($validator->errors()->toArray());
+            return ResponseController::set_status_code('BAD REQUEST');
+        }
+
+        try {
+            $object = $model::find($id);
+            ResponseController::set_data([$function_name => $object->$function_name]);
+            return ResponseController::set_status_code('OK');
+        } catch (\Exception $e) {
+            ResponseController::set_errors(true);
+            ResponseController::set_messages("error obteniendo los registros");
+            ResponseController::set_messages($e->getMessage());
+            return ResponseController::set_status_code('BAD REQUEST');
+        }
     }
 }
