@@ -1,0 +1,20 @@
+{
+  "name": "public",
+  "homepage": "https://github.com/leosalass/basic-api-rest",
+  "authors": [
+    "Leonardo Salas <leosalass@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "adminbsb-materialdesign": "^1.0.5"
+  }
+}
